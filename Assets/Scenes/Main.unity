@@ -5603,7 +5603,7 @@ GameObject:
   - component: {fileID: 1469919644}
   - component: {fileID: 1469919643}
   - component: {fileID: 1469919647}
-  - component: {fileID: 1469919640}
+  - component: {fileID: 1469919648}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5611,22 +5611,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1469919640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469919634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b8a44d0242c4d4cb775418b499b76a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canDash: 1
-  dashingPower: 24
-  dashingTime: 0.2
-  dashingCooldown: 0.8
 --- !u!96 &1469919643
 TrailRenderer:
   serializedVersion: 3
@@ -5855,6 +5839,22 @@ MonoBehaviour:
   isDashing: 0
   isAttack: 0
   canDoubleJump: 1
+--- !u!114 &1469919648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469919634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b8a44d0242c4d4cb775418b499b76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canDash: 1
+  dashingPower: 24
+  dashingTime: 0.2
+  dashingCooldown: 0.8
 --- !u!1 &1812571952
 GameObject:
   m_ObjectHideFlags: 0

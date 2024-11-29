@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
+public class Player_Attack : MonoBehaviour
 {
     Player_Move playerMove;
 
