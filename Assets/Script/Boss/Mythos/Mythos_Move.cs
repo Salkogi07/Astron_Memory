@@ -1,14 +1,21 @@
 using UnityEngine;
 
-public class Move_Mythos : MonoBehaviour
+public class Mythos_Move : MonoBehaviour
 {
     public Transform player; // 플레이어 오브젝트를 참조
     public float speed = 2f; // 이동 속도
     public bool isAttack = false;
 
+    private Mythos mythos;
+
+    private void Awake()
+    {
+        mythos = GetComponent<Mythos>();
+    }
+
     void Update()
     {
-        if (player != null && !isAttack)
+        if (player != null && !isAttack && mythos.isMove)
         {
             MoveTowardsPlayer();
         }
