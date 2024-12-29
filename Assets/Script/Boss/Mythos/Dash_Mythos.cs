@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Dash_Mythos : MonoBehaviour
 {
@@ -6,12 +7,16 @@ public class Dash_Mythos : MonoBehaviour
     public float dashDuration = 0.7f; // 대쉬 지속 시간
     public float dashCooldown = 5f; // 대쉬 쿨타임
     public float detectionRadius = 3f; // 감지 반경
+    public GameObject objectToSpawn;
 
     private float dashTime = 0f;
     public float cooldownTimer = 0f;
     public bool iscanDash = true; // 대쉬 가능 여부
     private Vector2 dashDirection = Vector2.zero; // 대쉬 방향
     private Move_Mythos moveMythosScript;
+    private GameObject player;
+
+    private bool hasSpawned = false; // 치도리 한 번만 생성하기 위한 플래그
 
     void Start()
     {
@@ -21,6 +26,9 @@ public class Dash_Mythos : MonoBehaviour
 
     void Update()
     {
+        // player 가져옴
+        player = GameObject.FindWithTag("Player");
+
         // 쿨타임 관리
         if (!iscanDash)
         {
@@ -29,6 +37,7 @@ public class Dash_Mythos : MonoBehaviour
             {
                 iscanDash = true;
                 moveMythosScript.isAttack = false;
+                hasSpawned = false; // 쿨타임이 끝난 후, 다시 치도리를 생성할 수 있도록 초기화
             }
         }
         else
@@ -37,6 +46,7 @@ public class Dash_Mythos : MonoBehaviour
             DetectPlayerAndDash();
         }
 
+        // 대쉬가 끝난 후 대쉬 동작
         if (!iscanDash && dashTime > 0)
         {
             Dash();
@@ -51,9 +61,27 @@ public class Dash_Mythos : MonoBehaviour
             transform.position += (Vector3)dashDirection * dashSpeed * Time.deltaTime;
             dashTime -= Time.deltaTime; // 대쉬 시간 감소
         }
+
+        // 치도리 생성 한 번만 실행되도록 조건 추가
+        if (!hasSpawned)
+        {
+            // 플레이어 위치 기준으로 대쉬 후 치도리 생성 위치 계산
+            if (player.transform.position.x < this.transform.position.x)
+            {
+                // Player가 기준 오브젝트보다 오른쪽에 있을 경우
+                hasSpawned = true;
+                StartCoroutine(SpawnObject(Vector3.left, 2f));
+            }
+            else
+            {
+                // Player가 기준 오브젝트보다 왼쪽에 있을 경우
+                hasSpawned = true;
+                StartCoroutine(SpawnObject(Vector3.right, 2f));
+            }
+        }
+
         // 대쉬 종료
         StartDashCooldown();
-        moveMythosScript.isAttack = true; // 플레이어의 움직임을 조절
     }
 
     void DetectPlayerAndDash()
@@ -80,6 +108,17 @@ public class Dash_Mythos : MonoBehaviour
         }
     }
 
+    IEnumerator SpawnObject(Vector3 direction, float distance)
+    {
+        Debug.Log("치도리");
+        yield return new WaitForSeconds(1f);
+        Vector3 spawnPosition = this.transform.position + direction * distance;
+        spawnPosition.y = -1f;
+        // 오브젝트를 생성
+        Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+        moveMythosScript.isAttack = false;
+    }
+
     void StartDashCooldown()
     {
         cooldownTimer = dashCooldown; // 쿨타임 초기화
@@ -92,4 +131,3 @@ public class Dash_Mythos : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }
-    
