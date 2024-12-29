@@ -35,9 +35,10 @@ public class Player_Attack : MonoBehaviour
                 Collider2D[] collider2Ds = Physics2D.OverlapBoxAll(pos.position, boxSize, 0);
                 foreach (Collider2D collider in collider2Ds)
                 {
-                    
+                    GameObject testEffect = Instantiate(AttackEffect, pos);
+                    Destroy(testEffect, 0.5f);
                 }
-                playerMove.isAttack = true;
+                //playerMove.isAttack = true;
                 curTime = coolTime;
             }
         }

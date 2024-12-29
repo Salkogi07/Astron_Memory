@@ -329,12 +329,12 @@ SpriteRenderer:
   m_SortingLayerID: -1974707359
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -4608818801236732244, guid: 3737f62f8796a844b941f7af39eab6ab, type: 3}
+  m_Sprite: {fileID: 4334783836991956000, guid: a85ab46c327908448b37bd6bb4a800a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.26, y: 0.27}
+  m_Size: {x: 1.5, y: 1.9}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5845,7 +5845,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1469919646}
   - component: {fileID: 1469919645}
-  - component: {fileID: 1469919648}
   - component: {fileID: 1469919644}
   - component: {fileID: 1469919643}
   - component: {fileID: 1469919647}
@@ -6050,8 +6049,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.02764666, y: 0.1145362}
-  m_Size: {x: 0.5497544, y: 1.300164}
+  m_Offset: {x: -0.11290383, y: -0.0020173788}
+  m_Size: {x: 0.6693034, y: 2.1085923}
   m_Direction: 0
 --- !u!4 &1469919646
 Transform:
@@ -6101,43 +6100,6 @@ MonoBehaviour:
   isDashing: 0
   isAttack: 0
   canDoubleJump: 1
---- !u!70 &1469919648
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1469919634}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.02764666, y: 0.1145362}
-  m_Size: {x: 0.5497544, y: 1.300164}
-  m_Direction: 1
 --- !u!1 &1812571952
 GameObject:
   m_ObjectHideFlags: 0
