@@ -424,6 +424,7 @@ MonoBehaviour:
   skill1_WaitTime: 1
   Skill2_WaitTime: 1
   Skill3_WaitTime: 1
+  isMove: 0
 --- !u!114 &465180290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,11 +439,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashSpeed: 15
   dashDuration: 0.5
-  dashCooldown: 10
   detectionRadius: 7
   objectToSpawn: {fileID: 16737482792647985, guid: 3ec2cb7dd4b32994e80c519b8b42fe18, type: 3}
-  cooldownTimer: 0
-  iscanDash: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,8 +806,8 @@ GameObject:
   m_Component:
   - component: {fileID: 769261622}
   - component: {fileID: 769261623}
-  - component: {fileID: 769261624}
   - component: {fileID: 769261625}
+  - component: {fileID: 769261624}
   - component: {fileID: 769261626}
   m_Layer: 7
   m_Name: Sprite

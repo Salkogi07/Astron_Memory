@@ -4,7 +4,7 @@ public class Mythos_Anim : MonoBehaviour
 {
     private Animator animator;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
@@ -12,9 +12,11 @@ public class Mythos_Anim : MonoBehaviour
     // 애니메이션 재생 메서드
     public void PlayAnimation(string animationName)
     {
+        Debug.Log(animator);
         if (animator != null)
         {
             animator.Play(animationName);
+            Debug.Log(animationName);
         }
     }
 }
