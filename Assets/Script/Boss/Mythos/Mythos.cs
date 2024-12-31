@@ -37,6 +37,7 @@ public class Mythos : MonoBehaviour
         {
             yield return null; // 한 프레임 대기
         }
+        anim.PlayAnimation("Mythos_Idle");
         StartCoroutine(ChooseSkill());
         isMove = true;
     }
