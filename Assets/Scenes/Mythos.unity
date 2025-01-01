@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 465180289}
   - component: {fileID: 465180288}
   - component: {fileID: 465180290}
+  - component: {fileID: 465180291}
   m_Layer: 7
   m_Name: Mythos
   m_TagString: Boss
@@ -432,7 +433,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465180281}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96a86e9f008f68c429e62a7cbd647e3c, type: 3}
   m_Name: 
@@ -441,6 +442,28 @@ MonoBehaviour:
   dashDuration: 0.5
   detectionRadius: 7
   objectToSpawn: {fileID: 16737482792647985, guid: 3ec2cb7dd4b32994e80c519b8b42fe18, type: 3}
+--- !u!114 &465180291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465180281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a78f67349b1c1f46bbfe7f56b4c0cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 3
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  liftHeight: 3
+  liftDuration: 0.3
+  horizontalForce: 20
+  verticalForce: 20
+  waitBeforeLaunch: 1.2
+  cooldown: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
