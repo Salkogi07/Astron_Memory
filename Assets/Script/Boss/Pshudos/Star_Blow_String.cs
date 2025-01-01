@@ -50,7 +50,7 @@ public class Blow_String : MonoBehaviour
        
     //}
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         // 플레이어와 충돌 시 동작
         if (other.CompareTag("Player"))
