@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Boss
+  - Enemy
+  - EnemySmoke
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - Player
   - Boss
-  - 
+  - Enemy
   - 
   - 
   - 

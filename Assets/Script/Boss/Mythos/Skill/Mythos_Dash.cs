@@ -13,6 +13,7 @@ public class Mythos_Dash : MonoBehaviour
     private Mythos_Move mythosMove;
     private GameObject player;
     private Mythos mythos;
+    private Mythos_Draft draft;
 
     private bool hasSpawned = false; // 치도리 한 번만 생성하기 위한 플래그
 
@@ -21,6 +22,7 @@ public class Mythos_Dash : MonoBehaviour
         // Move_Mythos 스크립트를 찾고 참조 저장
         mythosMove = GetComponent<Mythos_Move>();
         mythos = GetComponent<Mythos>();
+        draft = GetComponent<Mythos_Draft>();
     }
 
     public void ExecuteDash()
@@ -33,6 +35,7 @@ public class Mythos_Dash : MonoBehaviour
             dashDirection = new Vector2(player.transform.position.x - transform.position.x, 0).normalized;
             dashTime = dashDuration; // 대쉬 시간 초기화
             mythosMove.isAttack = true;
+            mythos.checkAttack = true;
             StartCoroutine(DashRoutine());
         }
     }
@@ -56,6 +59,7 @@ public class Mythos_Dash : MonoBehaviour
         }
 
         mythosMove.isAttack = false;
+        mythos.checkAttack = false;
     }
 
     IEnumerator SpawnObject(Vector3 direction, float distance)
