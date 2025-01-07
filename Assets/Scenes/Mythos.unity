@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 465180288}
   - component: {fileID: 465180290}
   - component: {fileID: 465180291}
+  - component: {fileID: 465180292}
   m_Layer: 7
   m_Name: Mythos
   m_TagString: Boss
@@ -425,6 +426,7 @@ MonoBehaviour:
   skill1_WaitTime: 1
   Skill2_WaitTime: 1
   Skill3_WaitTime: 1
+  checkAttack: 0
   isMove: 0
 --- !u!114 &465180290
 MonoBehaviour:
@@ -433,7 +435,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465180281}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96a86e9f008f68c429e62a7cbd647e3c, type: 3}
   m_Name: 
@@ -459,11 +461,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   liftHeight: 3
-  liftDuration: 0.3
+  liftDuration: 0.25
   horizontalForce: 20
   verticalForce: 20
   waitBeforeLaunch: 1.2
   cooldown: 10
+--- !u!114 &465180292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465180281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a32a1c7af507d5498738e59bd792654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSpawn: {fileID: 7099556263755800241, guid: 4bf8b589926c4524fbf9444d4dd3c37b, type: 3}
+  spawnY: -2
+  spawnInterval: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

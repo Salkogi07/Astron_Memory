@@ -34,9 +34,10 @@ public class Mythos_Draft : MonoBehaviour
         if (Time.time < nextUseTime || isSkillActive) return;
 
         Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
-        if (playerCollider != null)
+        if (playerCollider != null && !mythos.checkAttack)
         {
             mythos.isMove = false;
+            mythos.checkAttack = true;
             StartCoroutine(LiftAndLaunchPlayer(playerCollider));
         }
     }
@@ -101,6 +102,7 @@ public class Mythos_Draft : MonoBehaviour
         if (playerSkill != null) playerSkill.enabled = true;
         if (playerAttack != null) playerAttack.enabled = true;
         mythos.isMove = true;
+        mythos.checkAttack = false;
     }
 
 

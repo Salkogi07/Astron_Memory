@@ -7,6 +7,8 @@ public class Mythos : MonoBehaviour
 {
     public AnimationChecker checker { get; private set; }
     private Mythos_Dash dash;
+    private Mythos_Tremble tremble;
+
     private Mythos_Anim anim;
 
     private List<int> bag = new List<int>();
@@ -15,11 +17,14 @@ public class Mythos : MonoBehaviour
     public float Skill2_WaitTime = 1;
     public float Skill3_WaitTime = 1;
 
+    public bool checkAttack = false;
+
     public bool isMove = false;
 
     private void Awake()
     {
         dash = GetComponent<Mythos_Dash>();
+        tremble = GetComponent<Mythos_Tremble>();
         checker = GetComponentInChildren<AnimationChecker>();
         anim = GetComponentInChildren<Mythos_Anim>();
     }
@@ -33,7 +38,7 @@ public class Mythos : MonoBehaviour
     {
         isMove = false;
         anim.PlayAnimation("Mythos_Appeared");
-        while (!checker.IsAnimationFinished("Mythos_Appeared"))
+        while (!checker.IsAnimationFinished("Mythos_roar"))
         {
             yield return null; // 한 프레임 대기
         }
@@ -53,6 +58,7 @@ public class Mythos : MonoBehaviour
                 case 0:
                     yield return new WaitForSeconds(skill1_WaitTime);
                     Debug.Log("0번 패턴이 실행됨");
+                    tremble.ExecuteTremble();
                     break;
                 case 1:
                     yield return new WaitForSeconds(Skill2_WaitTime);
