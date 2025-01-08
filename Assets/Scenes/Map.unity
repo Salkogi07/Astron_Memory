@@ -1149,7 +1149,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148b3047e622f6e4eaeef57964986dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 1357205983}
+  tilemaps:
+  - {fileID: 1357205983}
+  - {fileID: 1250905501}
   targetObject: {fileID: 1156874121}
   visibilityRange: 5
 --- !u!1 &619394800
