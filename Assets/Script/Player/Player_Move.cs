@@ -19,6 +19,11 @@ public class Player_Move : MonoBehaviour
     [SerializeField] public Vector2 groundCheckSize = new Vector2(1f, 0.1f);
     [SerializeField] public LayerMask groundLayer;
 
+    [Header("Platform Check")]
+    [SerializeField] public LayerMask platformLayer;
+    [SerializeField] PlatformEffector2D effector;
+    [SerializeField] public bool isPlatform = false;
+
     [Header("Component")]
     public ParticleSystem dust;
     private SpriteRenderer spriteRenderer;
@@ -26,9 +31,9 @@ public class Player_Move : MonoBehaviour
     private Player_Skill playerSkill;
 
     [Header("IsAtcitoning")]
-    [SerializeField] public bool isPlatform = false;
     [SerializeField] private bool isJumping;
     [SerializeField] public bool isFacingRight = false;
+    bool isreversed;
 
     private int facingDir;
     private int moveInput = 0;
@@ -60,13 +65,15 @@ public class Player_Move : MonoBehaviour
             return;
         }
 
+        PlatformCheck();
+        GroundCheck();
+
         MoveInput();
-        Jump();
+        CheckJumpPlatform();
 
         Flip();
-
-        GroundCheck();
     }
+
 
     void MoveInput()
     {
@@ -94,7 +101,9 @@ public class Player_Move : MonoBehaviour
                 CreateDust();
 
             isFacingRight = !isFacingRight;
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 
@@ -106,7 +115,9 @@ public class Player_Move : MonoBehaviour
                 CreateDust();
 
             isFacingRight = !isFacingRight;
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 
@@ -170,22 +181,36 @@ public class Player_Move : MonoBehaviour
         isJumping = false;
     }
 
-    public bool canUmbrella()
+    private void CheckJumpPlatform()
     {
-        return !isDashing && !isAttack;
+        if (isPlatform)
+        {
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                if (Input.GetButtonDown("Jump"))
+                    ReverseOneWay();
+            }
+            else
+            {
+                Jump();
+            }
+        }
+        else
+        {
+            Jump();
+        }
+    }
+
+    private void PlatformCheck()
+    {
+        Collider2D collider = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, platformLayer);
+        isPlatform = collider != null;
     }
 
     private void GroundCheck()
     {
-        if (!isPlatform)
-        {
-            Collider2D collider = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
-            isGrounded = collider != null;
-        }
-        else
-        {
-            isGrounded = false;
-        }
+        Collider2D collider = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
+        isGrounded = collider != null;
     }
 
     void CreateDust()
@@ -216,6 +241,21 @@ public class Player_Move : MonoBehaviour
             animator.PlayAnimation("Idle");
         }
     }*/
+
+    IEnumerator _reversePlatformEffector()
+    {
+        effector.rotationalOffset = 180f;
+        yield return new WaitForSeconds(.5f);
+        effector.rotationalOffset = 0f;
+        isreversed = false;
+    }
+
+    public void ReverseOneWay()
+    {
+        if (isreversed) return;
+        isreversed = true;
+        StartCoroutine(_reversePlatformEffector());
+    }
 
 
     void OnDrawGizmos()
