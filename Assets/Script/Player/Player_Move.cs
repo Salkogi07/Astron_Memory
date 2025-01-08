@@ -101,7 +101,9 @@ public class Player_Move : MonoBehaviour
                 CreateDust();
 
             isFacingRight = !isFacingRight;
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 
@@ -113,7 +115,9 @@ public class Player_Move : MonoBehaviour
                 CreateDust();
 
             isFacingRight = !isFacingRight;
-            spriteRenderer.flipX = !spriteRenderer.flipX;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 
