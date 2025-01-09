@@ -8,7 +8,7 @@ public class Pshudos_Whale_of_Time : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        Whale_of_time();
     }
 
     // Update is called once per frame

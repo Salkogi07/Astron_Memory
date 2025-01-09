@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Whale_of_time : MonoBehaviour
 {
@@ -16,8 +17,9 @@ public class Whale_of_time : MonoBehaviour
     void Start()
     {
         // 시작 위치 저장
+        transform.position = new Vector3(12, -30, 0);
         startPos = transform.position;
-
+        
         // 방향 벡터를 정규화 (속도에 영향 없도록)
         //direction = direction.normalized;
         Destroy(gameObject, 5.25f);
@@ -27,16 +29,20 @@ public class Whale_of_time : MonoBehaviour
     {
         // PingPong을 사용해 방향대로 이동
         //float moveAmount = Mathf.PingPong(Time.time * speed);
-        //transform.position = startPos + direction * Time.time *speed;
-        transform.position = new Vector2(13 ,Time.time * speed);
-        //currentAngle = Mathf.PingPong(Time.time * rotationSpeed, rotationAngle * 2) - rotationAngle;
 
-        speed = speed + speeddown * Time.time;
-        Debug.Log($"{speed}");
-        if(speed <=1f)
+        //transform.position = new Vector2(13 ,Time.time * speed);
+        //currentAngle = Mathf.PingPong(Time.time * rotationSpeed, rotationAngle * 2) - rotationAngle;
+        
+            transform.position += Vector3.up * Time.deltaTime * speed;
+            speed = speed + speeddown ;
+            Debug.Log($"{speed}");
+
+
+        if (speed <= -4f)
         {
-        currentAngle = currentAngle - 0.1f * Time.time;
-        transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+            currentAngle = currentAngle - 0.05f * Time.time;
+            transform.rotation = Quaternion.Euler(0, 0, currentAngle);
         }
+
     }
 }
