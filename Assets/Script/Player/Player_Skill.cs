@@ -12,6 +12,8 @@ public class Player_Skill : MonoBehaviour
     [SerializeField] private float dashingPower = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 1f;
+    private float dashDir;
+    float originalGravity;
 
     void Awake()
     {
@@ -24,20 +26,28 @@ public class Player_Skill : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-            StartCoroutine(Dash());
+            playerMove.isDashing = true;
+            canDash = false;
+            tr.emitting = true;
+            originalGravity = rb.gravityScale;
+            rb.gravityScale = 0f;
+
+            dashDir = playerMove.isFacingRight ? 1 : -1;
+
+            dashDir = Input.GetAxisRaw("Horizontal");
+
+            StartCoroutine(StopDashing());
+        }
+
+        if(playerMove.isDashing)
+        {
+            rb.linearVelocityX = dashDir * dashingPower;
+            rb.linearVelocityY = 0;
         }
     }
 
-    private IEnumerator Dash()
+    private IEnumerator StopDashing()
     {
-        canDash = false;
-        playerMove.isDashing = true;
-        //playerAnimator.PlayAnimation("Dash");
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-        int dir = playerMove.isFacingRight ? 1 : -1;
-        rb.linearVelocity = new Vector2(transform.localScale.x * dashingPower * dir, 0f);
-        tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         rb.gravityScale = originalGravity;
