@@ -41,13 +41,13 @@ public class Mythos_Tremble : MonoBehaviour
         Vector3 startPosition = new Vector3(transform.position.x, spawnY, 0);
         SpawnObject(startPosition, direction, 0);
         yield return new WaitForSeconds(spawnInterval);
-        SpawnObject(startPosition + Vector3.right * 1 * direction, direction, 1);
+        SpawnObject(startPosition + Vector3.right * 2 * direction, direction, 1);
         yield return new WaitForSeconds(spawnInterval);
-        SpawnObject(startPosition + Vector3.right * 2 * direction, direction, 2);
+        SpawnObject(startPosition + Vector3.right * 4 * direction, direction, 2);
         yield return new WaitForSeconds(spawnInterval);
-        SpawnObject(startPosition + Vector3.right * 4 * direction, direction, 3);
+        SpawnObject(startPosition + Vector3.right * 6 * direction, direction, 3);
         yield return new WaitForSeconds(spawnInterval);
-        SpawnObject(startPosition + Vector3.right * 5 * direction, direction, 4);
+        SpawnObject(startPosition + Vector3.right * 8    * direction, direction, 4);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -60,6 +60,5 @@ public class Mythos_Tremble : MonoBehaviour
     private void SpawnObject(Vector3 position, float direction, int index)
     {
         Instantiate(objectToSpawn, position, Quaternion.identity);
-        Debug.Log($"Spawned object {index + 1} at {position}");
     }
 }

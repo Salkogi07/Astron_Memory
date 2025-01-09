@@ -8,6 +8,7 @@ public class Mythos : MonoBehaviour
     public AnimationChecker checker { get; private set; }
     private Mythos_Dash dash;
     private Mythos_Tremble tremble;
+    private Mythos_Roar roar;
 
     private Mythos_Anim anim;
 
@@ -25,6 +26,7 @@ public class Mythos : MonoBehaviour
     {
         dash = GetComponent<Mythos_Dash>();
         tremble = GetComponent<Mythos_Tremble>();
+        roar = GetComponent<Mythos_Roar>();
         checker = GetComponentInChildren<AnimationChecker>();
         anim = GetComponentInChildren<Mythos_Anim>();
     }
@@ -57,17 +59,18 @@ public class Mythos : MonoBehaviour
             {
                 case 0:
                     yield return new WaitForSeconds(skill1_WaitTime);
-                    Debug.Log("0번 패턴이 실행됨");
+                    Debug.Log("땅울림");
                     tremble.ExecuteTremble();
                     break;
                 case 1:
                     yield return new WaitForSeconds(Skill2_WaitTime);
-                    Debug.Log("1번 패턴이 실행됨");
+                    Debug.Log("대쉬");
                     dash.ExecuteDash();
                     break;
                 case 2:
                     yield return new WaitForSeconds(Skill3_WaitTime);
-                    Debug.Log("2번 패턴이 실행됨");
+                    Debug.Log("포효");
+                    roar.ExecuteRoar();
                     break;
             }
         }

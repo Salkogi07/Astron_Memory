@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 465180290}
   - component: {fileID: 465180291}
   - component: {fileID: 465180292}
+  - component: {fileID: 465180293}
   m_Layer: 7
   m_Name: Mythos
   m_TagString: Boss
@@ -316,8 +317,8 @@ Transform:
   m_GameObject: {fileID: 465180281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.19, y: -2.45, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalPosition: {x: 7.4, y: 1.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 769261622}
@@ -357,7 +358,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.22287512, y: -0.010549545}
+  m_Offset: {x: 0.22287512, y: -0.64}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -367,7 +368,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.27433, y: 3.1053314}
+  m_Size: {x: 1.49, y: 3.1053314}
   m_EdgeRadius: 0
 --- !u!50 &465180287
 Rigidbody2D:
@@ -481,6 +482,19 @@ MonoBehaviour:
   objectToSpawn: {fileID: 7099556263755800241, guid: 4bf8b589926c4524fbf9444d4dd3c37b, type: 3}
   spawnY: -2
   spawnInterval: 0.1
+--- !u!114 &465180293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465180281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50778f4ae685e6c448426c92e4b8eb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Roareffect: {fileID: 7701048081878166007, guid: 039b26ecdabcc4342b373b3e9ba89f3d, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -6168,8 +6182,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  dust: {fileID: 921458755}
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  effector: {fileID: 0}
   isPlatform: 0
+  dust: {fileID: 921458755}
   isJumping: 0
   isFacingRight: 0
   isDashing: 0
@@ -6364,7 +6382,7 @@ Transform:
   m_GameObject: {fileID: 2084007168}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.46, y: -3.61, z: 0}
+  m_LocalPosition: {x: -6.82, y: -3.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
